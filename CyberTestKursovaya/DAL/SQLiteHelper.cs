@@ -40,7 +40,7 @@ namespace CyberTestKursovaya.DAL
             catch (Exception ex) 
             {  Console.WriteLine(ex.Message); }
 
-            return "WTF";
+            return null;
         }
     }
     internal class SQLiteHelper2
@@ -80,7 +80,7 @@ namespace CyberTestKursovaya.DAL
             catch (Exception ex)
             { Console.WriteLine(ex.Message); }
 
-            return "WTF";
+            return null;
         }
     }
 }
