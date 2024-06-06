@@ -37,6 +37,8 @@
             label2 = new Label();
             label3 = new Label();
             numericUpDown1 = new NumericUpDown();
+            label4 = new Label();
+            label5 = new Label();
             ((System.ComponentModel.ISupportInitialize)numericUpDown1).BeginInit();
             SuspendLayout();
             // 
@@ -57,6 +59,7 @@
             answerButton.TabIndex = 1;
             answerButton.Text = "ответить";
             answerButton.UseVisualStyleBackColor = true;
+            answerButton.Click += answerButton_Click;
             // 
             // nextQuestionButton
             // 
@@ -66,6 +69,7 @@
             nextQuestionButton.TabIndex = 2;
             nextQuestionButton.Text = "следующий вопрос";
             nextQuestionButton.UseVisualStyleBackColor = true;
+            nextQuestionButton.Click += nextQuestionButton_Click;
             // 
             // questionLabel
             // 
@@ -81,7 +85,7 @@
             // 
             answerLabel.AutoSize = true;
             answerLabel.Font = new Font("Microsoft Sans Serif", 15.75F, FontStyle.Regular, GraphicsUnit.Point);
-            answerLabel.Location = new Point(34, 389);
+            answerLabel.Location = new Point(12, 389);
             answerLabel.Name = "answerLabel";
             answerLabel.Size = new Size(77, 25);
             answerLabel.TabIndex = 4;
@@ -122,7 +126,7 @@
             // 
             numericUpDown1.Font = new Font("Segoe UI", 14.25F, FontStyle.Regular, GraphicsUnit.Point);
             numericUpDown1.ForeColor = SystemColors.WindowText;
-            numericUpDown1.Location = new Point(136, 387);
+            numericUpDown1.Location = new Point(95, 387);
             numericUpDown1.Maximum = new decimal(new int[] { 3, 0, 0, 0 });
             numericUpDown1.Minimum = new decimal(new int[] { 1, 0, 0, 0 });
             numericUpDown1.Name = "numericUpDown1";
@@ -130,11 +134,34 @@
             numericUpDown1.TabIndex = 8;
             numericUpDown1.Value = new decimal(new int[] { 1, 0, 0, 0 });
             // 
+            // label4
+            // 
+            label4.AutoSize = true;
+            label4.Font = new Font("Microsoft Sans Serif", 14.25F, FontStyle.Regular, GraphicsUnit.Point);
+            label4.Location = new Point(12, 10);
+            label4.Name = "label4";
+            label4.Size = new Size(25, 24);
+            label4.TabIndex = 9;
+            label4.Text = "1.";
+            // 
+            // label5
+            // 
+            label5.AutoSize = true;
+            label5.Font = new Font("Microsoft Sans Serif", 11.25F, FontStyle.Regular, GraphicsUnit.Point);
+            label5.Location = new Point(246, 396);
+            label5.Name = "label5";
+            label5.Size = new Size(12, 18);
+            label5.TabIndex = 10;
+            label5.Text = ".";
+            label5.Click += label5_Click;
+            // 
             // FormTest
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(800, 450);
+            Controls.Add(label5);
+            Controls.Add(label4);
             Controls.Add(numericUpDown1);
             Controls.Add(label3);
             Controls.Add(label2);
@@ -162,5 +189,7 @@
         private Label label2;
         private Label label3;
         private NumericUpDown numericUpDown1;
+        private Label label4;
+        private Label label5;
     }
 }

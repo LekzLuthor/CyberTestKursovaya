@@ -20,66 +20,62 @@ namespace CyberTestKursovaya.DAL
                     { 
                         using(var reader = cmd.ExecuteReader())
                         {
-                            List<Sections> sections = new List<Sections>();
+                            String[] sectionNames = new string[5];
+
+                            int id;
+                            string sectionName;
+                            string sectionText;
 
                             while(reader.Read())
                             {
-                                sections.Add(new Sections
-                                {
-                                    Id = reader.GetInt32(0),      
-                                    SectionName = reader.GetString(1),
-                                    SectionText = reader.GetString(2)
-                                });
-                            }
+                                id = reader.GetInt32(0);
+                                sectionName = reader.GetString(1);
+                                sectionNames[id - 1] = sectionName;
 
-                            return sections;
+                            }
+                            return sectionNames;
                         }
                     }
                 }
             }
             catch (Exception ex) 
             {  Console.WriteLine(ex.Message); }
-
             return null;
         }
-    }
-    internal class SQLiteHelper2
-    {
-        internal static object GetQuestions()
+
+        internal static object GetSectionsTexts()
         {
             try
             {
-                using (var connection = new SQLiteConnection("@Data Source=db.sqlite;Version=3;"))
+                using (var connection = new SQLiteConnection("Data Source=db.sqlite;Version=3;"))
                 {
                     connection.Open();
-                    using (var cmd = new SQLiteCommand(@"SELECT id, question_text, first_option, second_option, third_option, right_option FROM Questions;", connection))
+                    using (var cmd = new SQLiteCommand(@"SELECT id, section_name, section_text FROM Theory;", connection))
                     {
                         using (var reader = cmd.ExecuteReader())
                         {
-                            List<Questions> questions = new List<Questions>();
+                            String[] sectionNames = new string[5];
+                            String[] sectionTexts = new string[5];
+
+                            int id;
+                            string sectionName;
+                            string sectionText;
 
                             while (reader.Read())
                             {
-                                questions.Add(new Questions
-                                {
-                                    Id = reader.GetInt32(0),
-                                    QuestionText = reader.GetString(1),
-                                    FirstOption = reader.GetString(2),
-                                    SecondOption = reader.GetString(3),
-                                    ThirdOption = reader.GetString(4),
-                                    RightOption = reader.GetInt64(5)
-                                });
+                                id = reader.GetInt32(0);
+                                sectionText = reader.GetString(2);
+                                sectionTexts[id - 1] = sectionText;
+
                             }
 
-                            return questions;
+                            return sectionTexts;
                         }
                     }
-                    connection.Close();
                 }
             }
             catch (Exception ex)
             { Console.WriteLine(ex.Message); }
-
             return null;
         }
     }
